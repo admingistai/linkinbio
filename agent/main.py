@@ -48,8 +48,16 @@ async def entrypoint(ctx: JobContext):
     )
     cartesia_voices: List[dict[str, Any]] = ctx.proc.userdata["cartesia_voices"]
 
+    # Find Carson's voice data
+    carson_voice = next(
+        (voice for voice in cartesia_voices if voice["id"] == "4df027cb-2920-4a1f-8c34-f21529d5c3fe"), 
+        None
+    )
+    
     tts = cartesia.TTS(
         model="sonic-2",
+        voice=carson_voice["embedding"] if carson_voice else None,
+        language="en"
     )
     agent = VoicePipelineAgent(
         vad=ctx.proc.userdata["vad"],
