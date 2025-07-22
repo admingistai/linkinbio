@@ -2,11 +2,9 @@ import Head from "next/head";
 import { useState, useCallback, useEffect } from "react";
 import { ConnectionProvider, useConnection } from "@/hooks/useConnection";
 import Profile from "@/components/Profile";
-import SocialLinks from "@/components/SocialLinks";
 import LinkGrid from "@/components/LinkGrid";
-import LatestVideo from "@/components/LatestVideo";
-import ExpandableSection from "@/components/ExpandableSection";
-import VoiceAgentButton from "@/components/VoiceAgentButton";
+import ScrollableContentArea from "@/components/ScrollableContentArea";
+import DefaultContent from "@/components/DefaultContent";
 import VoiceAgentOverlay from "@/components/VoiceAgentOverlay";
 import Toast, { ToastType } from "@/components/Toast";
 import { profileData } from "@/lib/profileData";
@@ -59,7 +57,7 @@ function HomeInner() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="min-h-screen bg-background relative overflow-hidden">
+      <main className="min-h-screen bg-background relative">
         {/* Toast Notifications */}
         {toastMessage && (
           <Toast
@@ -72,40 +70,34 @@ function HomeInner() {
         {/* Background gradient */}
         <div className="absolute inset-0 gradient-background" />
         
-        {/* Content */}
-        <div className="relative z-10 min-h-screen flex items-center justify-center px-4 py-12">
-          <div className="w-full max-w-md space-y-8">
-            {/* Profile Section */}
+        {/* Main Container */}
+        <div className="relative z-10">
+          <div className="container mx-auto px-4 pb-24">
+            
+            {/* 1. Profile Header - stays at top */}
             <Profile profile={profileData} />
             
-            {/* Social Links */}
-            <SocialLinks socials={profileData.socials} />
-            
-            {/* Latest Video */}
-            {profileData.latestVideo && (
-              <LatestVideo video={profileData.latestVideo} />
-            )}
-            
-            {/* Link Grid */}
-            <LinkGrid 
-              links={profileData.links} 
-              onTalkClick={handleVoiceClick}
-              isConnecting={isConnecting}
-            />
-            
-            {/* Expandable Sections */}
-            {profileData.expandableSections && profileData.expandableSections.map((section) => (
-              <ExpandableSection
-                key={section.id}
-                section={section}
-                onTalkClick={handleVoiceClick}
+            {/* 2. ScrollableContentArea - NOW in position 2 */}
+            <ScrollableContentArea>
+              <DefaultContent 
+                profileData={profileData} 
+                onTalkClick={handleVoiceClick} 
               />
-            ))}
+            </ScrollableContentArea>
+            
+            {/* 3. LinkGrid - NOW in position 3 */}
+            <div className="mt-4">
+              <div className="w-full max-w-md mx-auto">
+                <LinkGrid 
+                  links={profileData.links} 
+                  onTalkClick={handleVoiceClick}
+                  isConnecting={isConnecting}
+                />
+              </div>
+            </div>
+            
           </div>
         </div>
-        
-        {/* Voice Agent Button - Hidden when we have Talk to Me in the grid */}
-        {/* <VoiceAgentButton onClick={handleVoiceClick} /> */}
       </main>
     </>
   );

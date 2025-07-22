@@ -9,7 +9,7 @@ interface LinkGridProps {
 
 export default function LinkGrid({ links, onTalkClick, isConnecting }: LinkGridProps) {
   return (
-    <div className="grid grid-cols-2 gap-3 md:grid-cols-1 md:gap-4">
+    <div className="grid grid-cols-2 gap-3 w-full max-w-2xl mx-auto">
       {links.map((link, index) => (
         <EnhancedLinkButton
           key={link.id}

@@ -35,6 +35,18 @@ html, body {
     --ring: 217 91% 60%;
 
     --radius: 0.75rem;
+    
+    /* Layout height variables - corrected for proper order */
+    --profile-height: 100px;
+    --linkgrid-height: 200px;
+    --bottom-spacing: 100px;
+  }
+  
+  @media (min-width: 768px) {
+    :root {
+      --profile-height: 120px;
+      --linkgrid-height: 150px;
+    }
   }
 }
 
@@ -73,4 +85,18 @@ html, body {
 
 .animation-delay-600 {
   animation-delay: 600ms;
+}
+
+/* Scrollable content utilities */
+.scrollable-content {
+  height: calc(100vh - var(--profile-height) - var(--linkgrid-height) - var(--bottom-spacing));
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch; /* iOS momentum scrolling */
+  scrollbar-width: none; /* Firefox */
+  scroll-behavior: smooth;
+  overscroll-behavior-y: contain; /* Prevent pull-to-refresh issues */
+}
+
+.scrollable-content::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
 }

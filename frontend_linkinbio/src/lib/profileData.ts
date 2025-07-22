@@ -2,7 +2,7 @@ import { ProfileData } from "./types";
 
 export const profileData: ProfileData = {
   name: "Marques Brownlee",
-  bio: "Quality Tech Videos | YouTuber | Geek | Consumer Electronics | Tech Head | Internet",
+  bio: "Quality Tech Videos • YouTuber • Geek • Consumer Electronics • Tech Head • Internet",
   avatar: "/Marques_Brownlee_cropped.jpg",
   latestVideo: {
     id: "latest-1",
