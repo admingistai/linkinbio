@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+@layer base {
+  :root {
+    --background: 10 10 10;
+    --foreground: 255 255 255;
+
+    --card: 20 20 20;
+    --card-foreground: 255 255 255;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 30 30 30;
+    --secondary-foreground: 255 255 255;
+
+    --muted: 40 40 40;
+    --muted-foreground: 200 200 200;
+
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 50 50 50;
+    --input: 30 30 30;
+    --ring: 217 91% 60%;
+
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    @apply h-full;
+  }
+  body {
+    @apply bg-background text-foreground font-sans h-full antialiased;
+  }
+  #__next {
+    @apply h-full;
+  }
+}
+
+/* Custom gradient background */
+.gradient-background {
+  background: radial-gradient(
+    ellipse at top,
+    rgba(59, 130, 246, 0.1),
+    transparent 50%
+  );
+}
+
+/* Animation utilities */
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+
+.animation-delay-600 {
+  animation-delay: 600ms;
+}
