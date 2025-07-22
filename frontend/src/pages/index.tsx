@@ -26,7 +26,7 @@ export function HomeInner() {
   } | null>(null);
   const { shouldConnect, wsUrl, token, connect, disconnect } = useConnection();
 
-  const title = "LiveKit Voice Agent with Cartesia";
+  const title = "LiveKit Voice Agent with Cartesia by TJM";
   const description =
     "This is a demo of a LiveKit Voice Pipeline Agent using Cartesia and GPT-4o-mini.";
 
